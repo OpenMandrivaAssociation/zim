@@ -1,6 +1,6 @@
 %define name zim
 %define rname Zim
-%define version 0.17
+%define version 0.19
 %define release %mkrel 1
 
 Summary: A desktop wiki and outliner
@@ -49,6 +49,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
 %{_datadir}/applications/zim.desktop
+%{_datadir}/pixmaps/%{name}
 %{_datadir}/pixmaps/%{name}.png
-
 
