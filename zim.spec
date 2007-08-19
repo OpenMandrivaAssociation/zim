@@ -1,6 +1,6 @@
 %define name zim
 %define rname Zim
-%define version 0.19
+%define version 0.20
 %define release %mkrel 1
 
 Summary: A desktop wiki and outliner
@@ -13,6 +13,7 @@ Group: Editors
 Url: http://zoidberg.student.utwente.nl/zim/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: perl-Module-Build
+BuildRequires: desktop-file-utils
 BuildArch: noarch
 
 
@@ -37,8 +38,21 @@ EOF
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
+desktop-file-install --vendor='' \
+	--dir=%buildroot%_datadir/applications \
+	--remove-category='Application' \
+	%buildroot%_datadir/applications/*.desktop
+
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+%update_menus
+%update_desktop_database
+
+%postun
+%clean_menus
+%clean_desktop_database
 
 %files
 %defattr(-,root,root)
@@ -51,4 +65,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applications/zim.desktop
 %{_datadir}/pixmaps/%{name}
 %{_datadir}/pixmaps/%{name}.png
-
