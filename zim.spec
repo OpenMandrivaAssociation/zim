@@ -1,6 +1,6 @@
 %define name zim
 %define rname Zim
-%define version 0.20
+%define version 0.22
 %define release %mkrel 1
 
 Summary: A desktop wiki and outliner
@@ -14,6 +14,7 @@ Url: http://zoidberg.student.utwente.nl/zim/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: perl-Module-Build
 BuildRequires: desktop-file-utils
+BuildRequires: perl-Gtk2-Spell
 BuildArch: noarch
 
 
