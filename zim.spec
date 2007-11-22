@@ -1,13 +1,13 @@
 %define name zim
 %define rname Zim
-%define version 0.22
+%define version 0.23
 %define release %mkrel 1
 
 Summary: A desktop wiki and outliner
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{rname}-%{version}.tar.bz2
+Source0: http://pardus-larus.student.utwente.nl/~pardus/downloads/Zim/%{rname}-%{version}.tar.gz
 License: Artistic
 Group: Editors
 Url: http://zoidberg.student.utwente.nl/zim/
@@ -16,7 +16,6 @@ BuildRequires: perl-Module-Build
 BuildRequires: desktop-file-utils
 BuildRequires: perl-Gtk2-Spell
 BuildArch: noarch
-
 
 %description
 Zim is a WYSIWYG text editor written in Gtk2-Perl which aims to bring
