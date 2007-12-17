@@ -11,7 +11,6 @@ Source0: http://pardus-larus.student.utwente.nl/~pardus/downloads/Zim/%{rname}-%
 License: Artistic
 Group: Editors
 Url: http://zoidberg.student.utwente.nl/zim/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: perl-Module-Build
 BuildRequires: desktop-file-utils
 BuildRequires: perl-Gtk2-Spell
