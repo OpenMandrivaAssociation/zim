@@ -1,13 +1,13 @@
 %define name zim
 %define rname Zim
-%define version 0.23
+%define version 0.24
 %define release %mkrel 1
 
 Summary: A desktop wiki and outliner
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://pardus-larus.student.utwente.nl/~pardus/downloads/Zim/%{rname}-%{version}.tar.gz
+Source: http://www.zim-wiki.org/downloads/Zim-%version.tar.gz
 License: Artistic
 Group: Editors
 Url: http://zoidberg.student.utwente.nl/zim/
@@ -49,10 +49,12 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %update_menus
 %update_desktop_database
+%update_mime_database
 
 %postun
 %clean_menus
 %clean_desktop_database
+%clean_mime_database
 
 %files
 %defattr(-,root,root)
@@ -65,3 +67,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applications/zim.desktop
 %{_datadir}/pixmaps/%{name}
 %{_datadir}/pixmaps/%{name}.png
+%{_datadir}/mime/packages/zim.xml
