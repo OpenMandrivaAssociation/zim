@@ -10,7 +10,7 @@ Release: %{release}
 Source: http://www.zim-wiki.org/downloads/Zim-%version.tar.gz
 License: Artistic
 Group: Editors
-Url: http://zoidberg.student.utwente.nl/zim/
+Url: http://pardus-larus.student.utwente.nl/~pardus/projects/zim/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: perl-Module-Build
 BuildRequires: desktop-file-utils
