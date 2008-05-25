@@ -15,6 +15,9 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: perl-Module-Build
 BuildRequires: desktop-file-utils
 BuildRequires: perl-Gtk2-Spell
+BuildRequires: perl-File-MimeInfo
+BuildRequires: perl-File-BaseDir
+BuildRequires: perl-File-DesktopEntry
 BuildArch: noarch
 
 %description
