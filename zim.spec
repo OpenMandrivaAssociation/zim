@@ -1,7 +1,7 @@
 %define name zim
 %define rname Zim
 %define version 0.25
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: A desktop wiki and outliner
 Name: %{name}
