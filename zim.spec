@@ -38,7 +38,7 @@ EOF
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 desktop-file-install --vendor='' \
@@ -47,7 +47,7 @@ desktop-file-install --vendor='' \
 	%buildroot%_datadir/applications/*.desktop
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post
