@@ -1,6 +1,6 @@
 %define name zim
 %define rname Zim
-%define version 0.26
+%define version 0.28
 %define release %mkrel 1
 
 Summary: A desktop wiki and outliner
@@ -10,7 +10,7 @@ Release: %{release}
 Source: http://www.zim-wiki.org/downloads/Zim-%version.tar.gz
 License: Artistic
 Group: Editors
-Url: http://pardus-larus.student.utwente.nl/~pardus/projects/zim/
+Url: http://www.zim-wiki.org/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: perl-Module-Build
 BuildRequires: desktop-file-utils
