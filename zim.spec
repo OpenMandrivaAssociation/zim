@@ -13,6 +13,7 @@ Group:		Editors
 Url:		http://www.zim-wiki.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	python-devel
+BuildRequires:	python-gobject
 Requires:	python
 Requires:	pygtk2.0
 Requires:	python-gobject
