@@ -1,23 +1,24 @@
 %define name	zim
-%define rname Zim
-%define version	0.28
-%define release	%mkrel 2
+%define version	0.43
+%define release	%mkrel 1
 
 Summary:	A desktop wiki and outliner
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source:		http://www.zim-wiki.org/downloads/Zim-%version.tar.gz
-License:	Artistic
+Source:		http://www.zim-wiki.org/downloads/%{name}-%version.tar.gz
+Patch0:		zim-0.43-fix-setup.py-xdg.patch
+License:	GPLv2
 Group:		Editors
 Url:		http://www.zim-wiki.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	perl-Module-Build
-BuildRequires:	desktop-file-utils
-BuildRequires:	perl-Gtk2-Spell
-BuildRequires:	perl-File-MimeInfo
-BuildRequires:	perl-File-BaseDir
-BuildRequires:	perl-File-DesktopEntry
+BuildRequires:	python-devel
+Requires:	python
+Requires:	pygtk2.0
+Requires:	python-gobject
+Requires:	python-simplejson
+Suggests:	pyxdg
+Suggests:	xdg-utils
 BuildArch:	noarch
 
 %description
@@ -30,21 +31,20 @@ gives it the look and feel of an outliner. This tool is intended to
 keep track of TODO lists or to serve as a personal scratch book.
 
 %prep
-%setup -q -n %{rname}-%{version}
-
-%build
-perl ./Makefile.PL INSTALLDIRS=vendor <<EOF
-EOF
-%make
+%setup -q -n %{name}-%{version}
+# remove xdg stuff from setup.py, it doesn't work in this case
+%patch0 -p0 -b .setup.py
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std
+python setup.py install --root=%{buildroot}
 
-desktop-file-install --vendor='' \
-	--dir=%buildroot%_datadir/applications \
-	--remove-category='Application' \
-	%buildroot%_datadir/applications/*.desktop
+#install icons
+install -D -m 0644 data/zim.png %{buildroot}%{_icons64dir}/zim.png
+install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/hicolor/64x64/mimetypes/application-x-zim-notebook.png
+install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/hicolor/64x64/mimetypes/gnome-mime-application-x-zim-notebook.png
+
+%find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
@@ -63,15 +63,14 @@ rm -rf %{buildroot}
 %clean_mime_database
 %endif
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root)
-%doc Changes
+%doc README.txt CHANGELOG.txt
 %{_bindir}/%{name}
-%{perl_vendorlib}/*
-%{_mandir}/*/*
-%dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
-%{_datadir}/applications/zim.desktop
-%{_datadir}/pixmaps/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{python_sitelib}/*
+%{_mandir}/man1/%{name}*
 %{_datadir}/pixmaps/%{name}.png
-%{_datadir}/mime/packages/zim.xml
+%{_datadir}/mime/*
+%{_iconsdir}/hicolor/*/*/*
