@@ -1,5 +1,5 @@
 %define name	zim
-%define version	0.44
+%define version	0.46
 %define release	%mkrel 1
 
 Summary:	A desktop wiki and outliner
@@ -7,7 +7,7 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source:		http://www.zim-wiki.org/downloads/%{name}-%version.tar.gz
-Patch0:		zim-0.43-fix-setup.py-xdg.patch
+Patch0:		zim-0.46-fix-setup.py-xdg.patch
 License:	GPLv2
 Group:		Editors
 Url:		http://www.zim-wiki.org/
