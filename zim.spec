@@ -1,16 +1,11 @@
-%define name	zim
-%define version	0.50
-%define release	%mkrel 1
-
+Name:		zim
+Version:	0.55
+Release:	%mkrel 1
 Summary:	A desktop wiki and outliner
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Source:		http://www.zim-wiki.org/downloads/%{name}-%version.tar.gz
+Source:		http://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 License:	GPLv2
 Group:		Editors
 Url:		http://www.zim-wiki.org/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	python-devel
 BuildRequires:	python-gobject
 Requires:	python
@@ -31,24 +26,23 @@ gives it the look and feel of an outliner. This tool is intended to
 keep track of TODO lists or to serve as a personal scratch book.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %install
-rm -rf %{buildroot}
-python setup.py install --skip-xdg-cmd --root=%{buildroot}
+%__rm -rf %{buildroot}
+%__python setup.py install --skip-xdg-cmd --root=%{buildroot}
 
 #install icons
-install -D -m 0644 data/zim.png %{buildroot}%{_icons64dir}/zim.png
-install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/hicolor/64x64/mimetypes/application-x-zim-notebook.png
-install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/hicolor/64x64/mimetypes/gnome-mime-application-x-zim-notebook.png
+%__install -D -m 0644 data/zim.png %{buildroot}%{_icons64dir}/zim.png
+%__install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/hicolor/64x64/mimetypes/application-x-zim-notebook.png
+%__install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/hicolor/64x64/mimetypes/gnome-mime-application-x-zim-notebook.png
 
 %find_lang %{name}
 
 %clean
-rm -rf %{buildroot}
+%__rm -rf %{buildroot}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc README.txt CHANGELOG.txt
 %{_bindir}/%{name}
 %{_datadir}/%{name}/*
@@ -58,3 +52,4 @@ rm -rf %{buildroot}
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/mime/*
 %{_iconsdir}/hicolor/*/*/*
+%{_iconsdir}/ubuntu*/*/*/*
