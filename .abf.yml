@@ -1,2 +1,4 @@
+removed_sources:
+  zim-0.55.tar.gz: 0485260e6b06eebbbc8bf5528fbabb9606fd04c4
 sources:
-  zim-0.57.tar.gz: 83f94cb7d442d3fa585b77baf1f0b7f43e92992f
+  zim-0.58.tar.gz: fa3783f6af2e1bdd1d9ed45a2e97dc262e3ca1bd
