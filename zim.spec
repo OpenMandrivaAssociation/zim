@@ -1,17 +1,17 @@
 Name:		zim
-Version:	0.58
-Release:	2
+Version:	0.65
+Release:	1
 Summary:	A desktop wiki and outliner
 Source:		http://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 License:	GPLv2
 Group:		Editors
 Url:		http://www.zim-wiki.org/
-BuildRequires:	python-devel
-BuildRequires:	python-gobject
-Requires:	python
+BuildRequires:	python2-devel
+BuildRequires:	python2-gobject
+Requires:	python2
 Requires:	pygtk2.0
-Requires:	python-gobject
-Requires:	python-simplejson
+Requires:	python2-gobject
+Requires:	python2-simplejson
 Suggests:	pyxdg
 Suggests:	xdg-utils
 BuildArch:	noarch
@@ -29,7 +29,7 @@ keep track of TODO lists or to serve as a personal scratch book.
 %setup -q
 
 %install
-%__python setup.py install --skip-xdg-cmd --root=%{buildroot}
+%__python2 setup.py install --skip-xdg-cmd --root=%{buildroot}
 
 #install icons
 %__install -D -m 0644 data/zim.png %{buildroot}%{_icons64dir}/zim.png
@@ -45,10 +45,12 @@ keep track of TODO lists or to serve as a personal scratch book.
 %{_bindir}/%{name}
 %{_datadir}/%{name}/*
 %{_datadir}/applications/%{name}.desktop
-%{python_sitelib}/*
+%{python2_sitelib}/*
 %{_mandir}/man1/%{name}*
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/mime/*
+%{_datadir}/appdata/%{name}.appdata.xml
+
 %{_iconsdir}/hicolor/*/*/*
 %{_iconsdir}/ubuntu*/*/*/*
 
