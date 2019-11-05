@@ -6,12 +6,12 @@ Source:		http://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 License:	GPLv2
 Group:		Editors
 Url:		http://www.zim-wiki.org/
-BuildRequires:	python2-devel
-BuildRequires:	python2-gobject
-Requires:	python2
+BuildRequires:	python-devel
+BuildRequires:	pkgconfig(pygobject-3.0)
+Requires:	python
 Requires:	pygtk2.0
-Requires:	python2-gobject
-Requires:	python2-simplejson
+Requires:	python-gi
+Requires:	python-simplejson
 Suggests:	pyxdg
 Suggests:	xdg-utils
 BuildArch:	noarch
