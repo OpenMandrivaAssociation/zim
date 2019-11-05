@@ -8,6 +8,7 @@ Group:		Editors
 Url:		http://www.zim-wiki.org/
 BuildRequires:	python-devel
 BuildRequires:	pkgconfig(pygobject-3.0)
+BuildRequires:  python3dist(pygobject)
 Requires:	python
 Requires:	pygtk2.0
 Requires:	python-gi
