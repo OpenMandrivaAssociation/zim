@@ -29,7 +29,7 @@ keep track of TODO lists or to serve as a personal scratch book.
 %setup -q
 
 %install
-%__python2 setup.py install --skip-xdg-cmd --root=%{buildroot}
+%__python setup.py install --skip-xdg-cmd --root=%{buildroot}
 
 #install icons
 %__install -D -m 0644 data/zim.png %{buildroot}%{_icons64dir}/zim.png
@@ -45,7 +45,7 @@ keep track of TODO lists or to serve as a personal scratch book.
 %{_bindir}/%{name}
 %{_datadir}/%{name}/*
 %{_datadir}/applications/%{name}.desktop
-%{python2_sitelib}/*
+%{python_sitelib}/*
 %{_mandir}/man1/%{name}*
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/mime/*
