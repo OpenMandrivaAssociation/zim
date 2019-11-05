@@ -31,7 +31,7 @@ keep track of TODO lists or to serve as a personal scratch book.
 %setup -q
 
 %install
-%__python setup.py install --skip-xdg-cmd --root=%{buildroot}
+%__python setup.py install
 
 #install icons
 %__install -D -m 0644 data/zim.png %{buildroot}%{_icons64dir}/zim.png
