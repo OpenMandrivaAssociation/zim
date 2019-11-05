@@ -1,5 +1,5 @@
 Name:		zim
-Version:	0.65
+Version:	0.72.0
 Release:	1
 Summary:	A desktop wiki and outliner
 Source:		http://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
