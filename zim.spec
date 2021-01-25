@@ -8,6 +8,7 @@ Group:		Editors
 Url:		http://www.zim-wiki.org/
 BuildRequires:	python-devel
 BuildRequires:	python3dist(pygobject)
+BuildRequires:	typelib(GObject)
 Requires:	python
 Requires:	python3dist(pygobject)
 Requires:	typelib(Gtk)
