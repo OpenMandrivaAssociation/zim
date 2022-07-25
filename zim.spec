@@ -64,7 +64,7 @@ python setup.py install --root=%{buildroot}
 %{_datadir}/applications/%{name}.desktop
 %{python_sitelib}/*
 %{_mandir}/man1/%{name}*
-%{_datadir}/pixmaps/%{name}.png
+#{_datadir}/pixmaps/%{name}.png
 %{_datadir}/mime/*
 %{_datadir}/metainfo/org.zim_wiki.Zim.appdata.xml
 %{_iconsdir}/hicolor/*/*/*
