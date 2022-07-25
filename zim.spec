@@ -9,6 +9,7 @@ Url:		http://www.zim-wiki.org/
 BuildRequires:	python-devel
 BuildRequires:	python3dist(pygobject)
 BuildRequires:	python3dist(setuptools)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:	typelib(GObject)
 BuildRequires:	typelib(Gtk)
 BuildRequires:	typelib(Gdk)
