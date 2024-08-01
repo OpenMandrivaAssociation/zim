@@ -6,7 +6,8 @@ Source:		http://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 License:	GPLv2
 Group:		Editors
 Url:		http://www.zim-wiki.org/
-BuildRequires:	python-devel
+BuildRequires:	pkgconfig(python)
+BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:	python3dist(pygobject)
 BuildRequires:	python3dist(setuptools)
 BuildRequires:  pkgconfig(gtk+-3.0)
