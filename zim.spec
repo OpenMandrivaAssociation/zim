@@ -1,11 +1,14 @@
+# fix bogs requires
+%global __requires_exclude %{?__requires_exclude:%__requires_exclude|}^typelib\\(GtkosxApplication
+
 Name:		zim
 Version:	0.75.2
 Release:	2
 Summary:	A desktop wiki and outliner
-Source:		http://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
+Source:		https://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 License:	GPLv2
 Group:		Editors
-Url:		http://www.zim-wiki.org/
+Url:		https://www.zim-wiki.org/
 BuildRequires:	pkgconfig(python)
 BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:	python3dist(pygobject)
@@ -20,6 +23,7 @@ BuildRequires:	typelib(GLib)
 BuildRequires:	typelib(GObject)
 BuildRequires:	typelib(Pango)
 Requires:	python
+Requires: python-gobject3
 Requires:	python3dist(pygobject)
 Requires:	typelib(Gtk)
 Requires:	typelib(Gdk)
