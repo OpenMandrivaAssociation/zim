@@ -2,8 +2,8 @@
 %global __requires_exclude %{?__requires_exclude:%__requires_exclude|}^typelib\\(GtkosxApplication
 
 Name:		zim
-Version:	0.75.2
-Release:	2
+Version:	0.76.3
+Release:	4
 Summary:	A desktop wiki and outliner
 Source:		https://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 License:	GPLv2
@@ -48,11 +48,13 @@ gives it the look and feel of an outliner. This tool is intended to
 keep track of TODO lists or to serve as a personal scratch book.
 
 %prep
-%autosetup -p1
+%autosetup -p1  -n %{name}-%{version}
+
+%build
 python setup.py build
 
 %install
-python setup.py install --root=%{buildroot}
+python setup.py install --root=%{buildroot} --skip-build
 
 #install icons
 %__install -D -m 0644 data/zim.png %{buildroot}%{_icons64dir}/zim.png
@@ -66,7 +68,7 @@ python setup.py install --root=%{buildroot}
 %files -f %{name}.lang
 %{_bindir}/%{name}
 %{_datadir}/%{name}/*
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.zim_wiki.Zim.desktop
 %{python_sitelib}/*
 %{_mandir}/man1/%{name}*
 #{_datadir}/pixmaps/%{name}.png
