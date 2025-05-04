@@ -3,7 +3,7 @@
 
 Name:		zim
 Version:	0.76.3
-Release:	4
+Release:	3
 Summary:	A desktop wiki and outliner
 Source:		https://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 License:	GPLv2
@@ -55,6 +55,7 @@ python setup.py build
 
 %install
 python setup.py install --root=%{buildroot} --skip-build
+sed -i 's|^#!python$|#!/usr/bin/python|' %{buildroot}/usr/bin/zim
 
 #install icons
 %__install -D -m 0644 data/zim.png %{buildroot}%{_icons64dir}/zim.png
