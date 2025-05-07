@@ -2,8 +2,8 @@
 %global __requires_exclude %{?__requires_exclude:%__requires_exclude|}^typelib\\(GtkosxApplication
 
 Name:		zim
-Version:	0.75.2
-Release:	2
+Version:	0.76.3
+Release:	1
 Summary:	A desktop wiki and outliner
 Source:		https://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 License:	GPLv2
@@ -11,9 +11,9 @@ Group:		Editors
 Url:		https://www.zim-wiki.org/
 BuildRequires:	pkgconfig(python)
 BuildRequires:  pkgconfig(pygobject-3.0)
-BuildRequires:	python3dist(pygobject)
-BuildRequires:	python3dist(setuptools)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:	python%{pyver}dist(pygobject)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	typelib(GObject)
 BuildRequires:	typelib(Gtk)
 BuildRequires:	typelib(Gdk)
@@ -23,8 +23,8 @@ BuildRequires:	typelib(GLib)
 BuildRequires:	typelib(GObject)
 BuildRequires:	typelib(Pango)
 Requires:	python
-Requires: python-gobject3
-Requires:	python3dist(pygobject)
+Requires:	python-gobject3
+Requires:	python%{pyver}dist(pygobject)
 Requires:	typelib(Gtk)
 Requires:	typelib(Gdk)
 Requires:	typelib(GdkPixbuf)
@@ -48,14 +48,19 @@ gives it the look and feel of an outliner. This tool is intended to
 keep track of TODO lists or to serve as a personal scratch book.
 
 %prep
-%autosetup -p1
+%autosetup -p1  -n %{name}-%{version}
+# remove tarball egg-info
+rm -rf %{name}.egg-info
+
+%build
 python setup.py build
 
 %install
 python setup.py install --root=%{buildroot}
+sed -i 's|^#!python$|#!/usr/bin/python|' %{buildroot}/usr/bin/zim
 
 #install icons
-%__install -D -m 0644 data/zim.png %{buildroot}%{_icons64dir}/zim.png
+%__install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/zim.png
 %__install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/hicolor/64x64/mimetypes/application-x-zim-notebook.png
 %__install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/hicolor/64x64/mimetypes/gnome-mime-application-x-zim-notebook.png
 
@@ -66,11 +71,15 @@ python setup.py install --root=%{buildroot}
 %files -f %{name}.lang
 %{_bindir}/%{name}
 %{_datadir}/%{name}/*
-%{_datadir}/applications/%{name}.desktop
-%{python_sitelib}/*
+%{_datadir}/applications/org.zim_wiki.Zim.desktop
+%{python_sitelib}/%{name}
+%{python_sitelib}/%{name}-%{version}-py%{python_version}.*info
 %{_mandir}/man1/%{name}*
-#{_datadir}/pixmaps/%{name}.png
+#{_datadir}/pixmaps/%%{name}.png
 %{_datadir}/mime/*
 %{_datadir}/metainfo/org.zim_wiki.Zim.appdata.xml
+%{_iconsdir}/%{name}.png
 %{_iconsdir}/hicolor/*/*/*
 %{_iconsdir}/ubuntu*/*/*/*
+%doc README.md
+%license LICENSE
