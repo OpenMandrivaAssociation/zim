@@ -3,7 +3,7 @@
 
 Name:		zim
 Version:	0.75.2
-Release:	2
+Release:	3
 Summary:	A desktop wiki and outliner
 Source:		https://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 License:	GPLv2
