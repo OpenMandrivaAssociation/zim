@@ -2,8 +2,8 @@
 %global __requires_exclude %{?__requires_exclude:%__requires_exclude|}^typelib\\(GtkosxApplication
 
 Name:		zim
-Version:	0.75.2
-Release:	3
+Version:	0.77.2
+Release:	1
 Summary:	A desktop wiki and outliner
 Source:		https://www.zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 License:	GPLv2
