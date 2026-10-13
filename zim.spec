@@ -54,22 +54,14 @@ python setup.py build
 %install
 python setup.py install --root=%{buildroot}
 
-#install icons
-%__install -D -m 0644 data/zim.png %{buildroot}%{_icons64dir}/zim.png
-%__install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/hicolor/64x64/mimetypes/application-x-zim-notebook.png
-%__install -D -m 0644 data/zim.png %{buildroot}%{_iconsdir}/hicolor/64x64/mimetypes/gnome-mime-application-x-zim-notebook.png
-
 %find_lang %{name}
-
-%clean
 
 %files -f %{name}.lang
 %{_bindir}/%{name}
 %{_datadir}/%{name}/*
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.zim_wiki.Zim.desktop
 %{python_sitelib}/*
 %{_mandir}/man1/%{name}*
-#{_datadir}/pixmaps/%{name}.png
 %{_datadir}/mime/*
 %{_datadir}/metainfo/org.zim_wiki.Zim.appdata.xml
 %{_iconsdir}/hicolor/*/*/*
